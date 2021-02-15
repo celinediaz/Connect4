@@ -23,10 +23,12 @@ for (let i = 0; i < (6 * 7); i++) {
 function selectColumn() {
     if (!gameover) {
         let columnNum = +document.getElementById("column").value;
+        if(columnNum >= 0 && columnNum<=7){
         player.textContent = player1 ? "Player 2's turn" : "Player 1's turn";
         player.style.color = player1 ? "#900C0C" : "#746912";
         player1 = player1 ? false : true;
         placeMark(columnNum);
+        }
     }
 }
 /**
