@@ -1,6 +1,8 @@
 # Connect4
 Connect 4 game done for my Web Dev class.
 
+Live demo: https://celinediaz.github.io/Connect4/
+
 ## Characteristics
 - There are 6 rows and 7 columns
 - User can select the column through the input form, then hit the button or enter key.
