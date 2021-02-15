@@ -30,6 +30,15 @@ function selectColumn() {
     }
 }
 /**
+ * If the player hits enter
+ */
+document.addEventListener('keydown', function (e) {
+    if (e.key === "Enter") {
+      selectColumn();
+      e.preventDefault();
+    }
+});
+/**
  * Places the mark according to the column selected.
  * It checks if they have won, if so it displays some winning message. 
  * @param {number} columnNum the column selected by the player.
@@ -57,7 +66,7 @@ function placeMark(columnNum) {
     }
 }
 /**
- * Runs each direction's check, if one happens to pass the check, it returns who won. 
+ * Runs each direction's check.
  * @param {number} col Column of the cell
  * @param {number} row Row of the cell
  * @param {boolean} player1 Player that chose that cell
