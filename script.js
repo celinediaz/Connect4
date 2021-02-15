@@ -30,12 +30,12 @@ function selectColumn() {
     }
 }
 /**
- * If the player hits enter
+ * If the player hits enter the column is selected. 
  */
 document.addEventListener('keydown', function (e) {
     if (e.key === "Enter") {
-      selectColumn();
-      e.preventDefault();
+        e.preventDefault();
+        selectColumn();
     }
 });
 /**
