@@ -28,6 +28,7 @@ function selectColumn() {
             player.style.color = player1 ? "#900C0C" : "#746912";
             player1 = player1 ? false : true;
             placeMark(columnNum);
+            document.getElementById("column").value = '';
         }
     }
 }
@@ -38,7 +39,6 @@ document.addEventListener('keydown', function (e) {
     if (e.key === "Enter") {
         e.preventDefault();
         selectColumn();
-        document.getElementById("column").value = '';
     }
 });
 /**
