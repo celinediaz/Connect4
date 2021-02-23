@@ -75,40 +75,41 @@ function placeMark(columnNum) {
  * @param {boolean} player1 Player that chose that cell
  */
 function checkIfWon(col, row, player1) {
+    const winnerMessage = !player1 ? "Player 1 won" : "Player 2 won"
     // HORIZONTAL
-    if (checkHorizontal(col, row, player1)) return checkHorizontal(col, row, player1);
+    if (checkHorizontal(col, row, player1)) return winnerMessage;
     // VERTICAL
-    if (checkVertical(col, row, player1)) return checkVertical(col, row, player1);
+    else if (checkVertical(col, row, player1)) return winnerMessage;
     // \ negative slope
-    if (checkDiagonalNeg(col, row, player1)) return checkDiagonalNeg(col, row, player1);
+    else if (checkDiagonalNeg(col, row, player1)) return winnerMessage;
     // / positive slope
-    if (checkDiagonalPos(col, row, player1)) return checkDiagonalPos(col, row, player1);
+    else if (checkDiagonalPos(col, row, player1)) return winnerMessage;
 }
 
 function checkHorizontal(col, row, player1) {
     let rep = 1;
     for (let i = col; i < 6 && board[i + 1][row] === +player1; i++, ++rep);
     for (let i = col; i >= 1 && board[i - 1][row] === +player1; i--, ++rep);
-    if (rep >= 4) return !player1 ? "Player 1 won" : "Player 2 won";
+    return rep >= 4;
 }
 
 function checkVertical(col, row, player1) {
     let rep = 1;
     for (let i = row; i < 6 && board[col][i + 1] === +player1; i++, ++rep);
     for (let i = row; i >= 1 && board[col][i - 1] === +player1; i--, ++rep);
-    if (rep >= 4) return !player1 ? "Player 1 won" : "Player 2 won";
+    return rep >= 4;
 }
 
 function checkDiagonalNeg(col, row, player1) {
     let rep = 1;
     for (let i = col, j = row; i < 6 && j < 6 && board[i + 1][j + 1] === +player1; i++, j++, rep++);
     for (let i = col, j = row; i >= 1 && j >= 1 && board[i - 1][j - 1] === +player1; i--, j--, rep++);
-    if (rep >= 4) return !player1 ? "Player 1 won" : "Player 2 won";
+    return rep >= 4;
 }
 
 function checkDiagonalPos(col, row, player1) {
     let rep = 1;
     for (let i = col, j = row; i < 6 && j >= 1 && board[i + 1][j - 1] === +player1; i++, j--, rep++);
     for (let i = col, j = row; i >= 1 && j < 6 && board[i - 1][j + 1] === +player1; i--, j++, rep++);
-    if (rep >= 4) return !player1 ? "Player 1 won" : "Player 2 won";
+    return rep >= 4;
 }
