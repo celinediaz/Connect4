@@ -75,15 +75,9 @@ function placeMark(columnNum) {
  * @param {boolean} player1 Player that chose that cell
  */
 function checkIfWon(col, row, player1) {
-    const winnerMessage = !player1 ? "Player 1 won" : "Player 2 won"
-    // HORIZONTAL
-    if (checkHorizontal(col, row, player1)) return winnerMessage;
-    // VERTICAL
-    else if (checkVertical(col, row, player1)) return winnerMessage;
-    // \ negative slope
-    else if (checkDiagonalNeg(col, row, player1)) return winnerMessage;
-    // / positive slope
-    else if (checkDiagonalPos(col, row, player1)) return winnerMessage;
+    if (checkHorizontal(col, row, player1) || checkVertical(col, row, player1) || checkDiagonalNeg(col, row, player1) || checkDiagonalPos(col, row, player1)){
+        return !player1 ? "Player 1 won" : "Player 2 won";
+    }
 }
 
 function checkHorizontal(col, row, player1) {
@@ -96,7 +90,8 @@ function checkHorizontal(col, row, player1) {
 function checkVertical(col, row, player1) {
     let rep = 1;
     for (let i = row; i < 6 && board[col][i + 1] === +player1; i++, ++rep);
-    for (let i = row; i >= 1 && board[col][i - 1] === +player1; i--, ++rep);
+    //unnecessary due the nature of the game, since you can't insert a value under a cell, it'd be useful in another game though.
+    //for (let i = row; i >= 1 && board[col][i - 1] === +player1; i--, ++rep);
     return rep >= 4;
 }
 
